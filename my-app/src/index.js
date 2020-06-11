@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Sidebar from './containers/Sidebar';
-import SignUp from './containers/SignUp';
-import Auth from './containers/Auth';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import SignIn from './containers/Auth/SignIn';
+import SignUp from './containers/Auth/SignUp';
+import Navbar from './components/Navbar';
+import ErrorPage from './components/ErrorPage';
 
 ReactDOM.render(
-  <div>
-    {/* <Sidebar
-      title="Class Component"
-      data={{ name: 'Alisher', age: 78 }}
-    /> */}
-    {/* <SignUp /> */}
-    <Auth />
-  </div>
+  <BrowserRouter>
+    <Navbar />
+    <Switch>
+      <Route exact path="/sign-in" component={SignIn} />
+      <Route exact path="/sign-up" component={SignUp} />
+      <Route component={ErrorPage} />
+    </Switch>
+  </BrowserRouter>
   , document.getElementById('root'));
